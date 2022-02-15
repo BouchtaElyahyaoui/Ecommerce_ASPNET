@@ -1,0 +1,57 @@
+﻿@model ECOMMERCE_Project_ASPNET.Models.Probleme
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using ()
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Probleme</h4>
+    <hr />
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MessageProb, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MessageProb, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MessageProb, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StatusProb, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.StatusProb)
+                @Html.ValidationMessageFor(model => model.StatusProb, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="text-center" style="margin-left:95px;">
+        <input type="submit" style="font-size: 2rem; background-color: #eeb951; border-radius: 15px;margin-bottom:20px;" value="Edit" class="btn  btn-block  py-2 " />
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

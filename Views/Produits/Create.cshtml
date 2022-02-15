@@ -1,0 +1,115 @@
+﻿@model ECOMMERCE_Project_ASPNET.Models.Produit
+
+
+@{
+    ViewBag.Title = "Create";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .MakeWide {
+            width: 200px;
+            height:30px;
+        }
+    </style>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container" style="margin-top:25px;">
+        <h2 class="text-center" style="font-size: 5rem; margin-bottom: 25px; color: #eeb951;">Product Form</h2>
+        <div class="row justify-content-center"> 
+            <div class="col-12 col-md-8 col-lg-6 pb-5">
+
+
+                <!--Form with header-->
+
+                @using (Html.BeginForm("Create", "Produits", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+
+                    @Html.AntiForgeryToken()
+                    <div class="card" style="border-color: #eeb951; border-radius: 25px" >
+                        <div class="card-header p-0">
+                            <div class=" text-center " style="background-color: #eeb951; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                                <h3 style="font-size:3rem;"> Products</h3>
+                                <p class="m-0" style="font-size:2rem;">Create Your New Product</p>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+
+                            <!--Body-->
+
+
+                            <div class="form-group" style="margin-left:110px;">
+                                <div class="input-group mb-2">
+                                   
+                                    <input type="text" class="form-control" name="LibelleProd" id="LibelleProd" placeholder="Product Name" style="height: 55px; font-size: 2rem; border-radius: 8px; margin-bottom: 8px; " required>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-left: 110px;">
+                                <div class="input-group mb-2">
+                                    
+                                    <input type="text" class="form-control" name="DescriptionProd" id="DescriptionProd" placeholder="Product Description" style="height: 55px; font-size: 2rem; border-radius: 8px; margin-bottom: 8px; " required>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-left: 110px;">
+                                <div class="input-group mb-2">
+                                   
+                                    <input type="text" class="form-control" name="PrixProd" id="PrixProd" placeholder="Product Price" style="height: 55px; font-size: 2rem; border-radius: 8px; margin-bottom: 8px; " required>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-left: 110px;">
+                                <div class="input-group mb-2">
+                                   
+                                    <input type="file" class="form-control" name="ImageFile" id="ImageFile" style="height: 55px; font-size: 2rem;border-radius:8px;margin-bottom:8px;" required>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group" style="display:none;">
+                                @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <input class="textbox" id="UserId" name="UserId" type="text" value="@ViewBag.Iden" />
+                                    @*@Html.EditorFor(model =>model.UserId , new { value = "BOUCHTA" })*@
+                                    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-left: 110px;margin-bottom:25px;">
+                                <div class="input-group mb-2">
+                                    @Html.DropDownListFor(model => model.CategorieId, @ViewBag.categoryList as SelectList ,"Select Categorie", new { @class = "MakeWide" })
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="text-center" style="margin-left:95px;">
+                                <input type="submit" style="font-size: 2rem; background-color: #eeb951; border-radius: 15px;margin-bottom:20px;" value="Create" class="btn  btn-block  py-2 " />
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+                <!--Form with header-->
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ECOMMERCE_Project_ASPNET.Models.Produit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LibelleProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategorieId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LibelleProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrixProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategorieId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdProd }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdProd }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdProd })
+        </td>
+    </tr>
+}
+
+</table>

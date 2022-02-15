@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ECOMMERCE_Project_ASPNET.Models.Probleme>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MessageProb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusProb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MessageProb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusProb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdProb }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdProb }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdProb })
+        </td>
+    </tr>
+}
+
+</table>

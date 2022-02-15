@@ -1,0 +1,135 @@
+﻿@model ECOMMERCE_Project_ASPNET.Models.AspNetUser
+
+
+@{ ViewBag.Title = "Edit"; }
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container" style="margin-top:25px;">
+        <h2 class="text-center" style="font-size: 5rem; margin-bottom: 25px; color: #eeb951;">Complete Your Registration</h2>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 pb-5">
+
+
+                <!--Form with header-->
+
+                @using (Html.BeginForm())
+                {
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+                    <div class="card " style="border-color: #eeb951;border-radius: 25px">
+                        <div class="card-header " style="background-color: #eeb951; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                            <div class="  text-center ">
+                                <h3 style="font-size:3rem;"> Personal Information</h3>
+                                <p class="m" style="font-size:2rem;margin-bottom:8px;">Please Provide More Informations About You ! </p>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+
+                            <!--Body-->
+
+                            <div class="form-group" style="margin-left:114px;margin-top:25px;margin-bottom:15px;display:none;">
+                                <div class="input-group mb-2">
+
+                                    <input type="text" class="form-control" name="UserName" id="UserName" value="@ViewBag.UserName" placeholder="Enter Your User Name" style="height: 55px; font-size: 2rem; border-radius: 8px; margin-bottom: 8px; " required>
+                                   
+                                </div>
+                            </div>
+
+
+                            <div class="form-group" style="margin-left:114px;margin-top:25px;margin-bottom:15px;">
+                                <div class="input-group mb-2">
+
+                                    <input type="text" class="form-control" name="PhoneNumber" id="PhoneNumber" placeholder="Enter Your Phone Number" style="height: 55px; font-size: 2rem; border-radius: 8px; margin-bottom: 8px; " required>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-left: 114px; margin-top: 25px; margin-bottom: 15px;">
+                                <div class="input-group mb-2">
+
+                                    <input type="text" class="form-control" name="Adresse" id="Adresse" placeholder="Verify Your Home Address" style="height: 55px; font-size: 2rem; border-radius: 8px; margin-bottom: 8px; " required>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-left: 114px; margin-top: 25px; margin-bottom: 15px;">
+                                <div class="input-group mb-2">
+
+                                    <input type="text" class="form-control" name="NomEntreprise" id="NomEntreprise" placeholder="Enter Your Company Name " style="height: 55px; font-size: 2rem; border-radius: 8px; margin-bottom: 8px; " required>
+                                </div>
+                            </div>
+
+
+
+                            <div class="text-center" style="margin-left:114px;">
+                                <input type="submit" style="font-size: 2rem; background-color: #eeb951; border-radius: 15px; margin-bottom: 20px;" value="Complete My registery" name="button" class="btn  btn-block  py-2 " />
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div style="display:none;">
+
+
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control input_user", placeholder = "Email" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.PasswordHash, new { htmlAttributes = new { @class = "form-control input_user", placeholder = "Password" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.SecurityStamp, new { htmlAttributes = new { @class = "form-control input_user", placeholder = "Security stamp" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.Role, new { htmlAttributes = new { @class = "form-control input_user", placeholder = "Security stamp" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                }
+
+                <!--Form with header-->
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
